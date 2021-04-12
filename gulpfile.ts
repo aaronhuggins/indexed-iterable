@@ -8,7 +8,7 @@ export async function cleanup (): Promise<void> {
     '**/*.js',
     '**/*.js.map'
   ], {
-    ignore: ['**/node_modules/**']
+    ignore: ['**/node_modules/**', 'docs/**']
   })
 }
 

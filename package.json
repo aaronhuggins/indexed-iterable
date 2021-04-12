@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "An implementation of an iterable wrapper which implements caching and indexing of other iterables (such as generators) to make them array-like and re-usable.",
   "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "lib/*.js",
+    "lib/*.d.ts",
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
+    "prepack": "tsc",
+    "postpack": "gulp cleanup",
     "test": "gulp coverage"
   },
   "repository": {
