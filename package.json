@@ -1,0 +1,42 @@
+{
+  "name": "indexed-iterable",
+  "version": "0.0.0",
+  "description": "An implementation of an iterable wrapper which implements caching and indexing of other iterables (such as generators) to make them array-like and re-usable.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahuggins-nhs/indexed-iterable.git"
+  },
+  "keywords": [
+    "iterator",
+    "generator",
+    "iterable",
+    "cache",
+    "index"
+  ],
+  "author": "Aaron Huggins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahuggins-nhs/indexed-iterable/issues"
+  },
+  "homepage": "https://github.com/ahuggins-nhs/indexed-iterable#readme",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/gulp": "^4.0.8",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.37",
+    "gulp": "^4.0.2",
+    "gulp-shell": "^0.8.0",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^9.1.1",
+    "ts-standard": "^10.0.0",
+    "typedoc": "^0.20.35",
+    "typedoc-plugin-jekyll": "^0.1.0",
+    "typescript": "^4.2.4"
+  }
+}
