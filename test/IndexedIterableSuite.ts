@@ -75,6 +75,12 @@ describe('IndexedIterable', () => {
     }
 
     strictEqual(count, 9)
+
+    for (const index of helloWorldIterable.keys()) {
+      count = index
+    }
+
+    strictEqual(count, 9)
   })
 
   it ('should handle additional array-like methods', () => {

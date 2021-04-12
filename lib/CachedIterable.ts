@@ -68,4 +68,31 @@ export class CachedIterable<T> implements Iterable<T> {
     // When the current iterable has been iterated once, set the flag to short-circuit from the cache for subsequent calls.
     this._iterableFinished = true
   }
+
+  protected getSize (): number {
+    if (this._iterableFinished) {
+      return this._cache.length
+    }
+
+    if (typeof this._iterable === 'object') {
+      if ('size' in this._iterable) {
+        return (this._iterable as any).size
+      }
+
+      if ('length' in this._iterable) {
+        return (this._iterable as any).length
+      }
+    }
+
+    const iterator = this._iterable[Symbol.iterator]()
+    let next: IteratorResult<T> = iterator.next()
+    let index = -1
+
+    while (!next.done) {
+      next = iterator.next()
+      index++
+    }
+
+    return index + 1
+  }
 }

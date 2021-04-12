@@ -44,27 +44,7 @@ export class IndexedIterable<T> extends CachedIterable<T> {
    * > wrapped iterable, as it must pre-cache the iterable in order to determine its length.
    */
   get length (): number {
-    if (this._iterableFinished) {
-      return this._cache.length
-    }
-
-    if (typeof this._iterable === 'object') {
-      if ('size' in this._iterable) {
-        return (this._iterable as any).size
-      }
-
-      if ('length' in this._iterable) {
-        return (this._iterable as any).length
-      }
-    }
-
-    let index = -1
-
-    for (const key of this.keys()) {
-      index = key
-    }
-
-    return index + 1
+    return super.getSize()
   }
 
   /** Get a result by its index in the list. */
