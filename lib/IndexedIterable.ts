@@ -10,7 +10,11 @@ export class IndexedIterable<T> extends CachedIterable<T> {
         if (typeof prop === 'string') {
           const key = parseFloat(prop)
 
-          return target[Number.isNaN(key) ? prop : key]
+          if (Number.isNaN(key)) {
+            return target[prop]
+          } else {
+            return target.getByIndex(key)
+          }
         } else {
           return target[prop]
         }
@@ -63,10 +67,31 @@ export class IndexedIterable<T> extends CachedIterable<T> {
     return index + 1
   }
 
+  /** Get a result by its index in the list. */
+  private getByIndex (key: number): T {
+    // We check if `key in ...` because we need to avoid weird cases where `indexOf` or `includes` may return `-1` despite an index being present.
+    if (key in this._cache || this._iterableFinished) {
+      return this._cache[key]
+    }
+
+    let result: T
+
+    for (const [index, value] of this.entries()) {
+      if (index === key) {
+        result = value
+        break
+      }
+    }
+
+    return result
+  }
+
   /** Returns an iterable of key, value pairs for every entry in the indexed iterable. */
   * entries (): IterableIterator<[number, T]> {
     if (this._iterableFinished) {
-      return this._cache.entries()
+      for (const value of this._cache.entries()) yield value
+
+      return
     }
 
     let index = 0

@@ -1,12 +1,17 @@
+function isIterable<T = any> (iterable: any): iterable is Iterable<T> {
+  return typeof iterable !== 'undefined' && iterable !== null && typeof iterable[Symbol.iterator] === 'function'
+}
+
 /** Class to make any iterable, such as a generator instance, re-usable while
  * maintaining their asynchronous nature by caching the underlying values as
  * they are yielded.
  */
 export class CachedIterable<T> implements Iterable<T> {
   constructor (iterable?: Iterable<T>) {
+    const canIterate = isIterable<T>(iterable)
     this._cache = []
-    this._iterable = iterable
-    this._iterableFinished = typeof iterable === 'undefined'
+    this._iterable = canIterate ? iterable : undefined
+    this._iterableFinished = !canIterate
   }
 
   protected readonly _cache: T[]
@@ -27,8 +32,8 @@ export class CachedIterable<T> implements Iterable<T> {
 
     if (this._cache.length > 0) {
       // If the cache is populated, but another instance of iteration has not finished, yield values from the cache first.
-      for (const value of this._cache) {
-        yield value
+      for (const cached of this._cache) {
+        yield cached
 
         // Increment the index for each turn so that the current state of the iterable populates values in their correct cache index.
         index++
@@ -36,18 +41,26 @@ export class CachedIterable<T> implements Iterable<T> {
     }
 
     // Iterate over the wrapped iterable, incrementing the index for each turn to correctly cache values.
-    for (const value of this._iterable) {
-      this._cache[index] = value
+    if (typeof this._iterable === 'object') {
+      const iterator = this._iterable[Symbol.iterator]()
+      let next: IteratorResult<T> = iterator.next()
 
-      yield value
+      while (next.done !== true) {
+        this._cache[index] = next.value
 
-      index++
+        yield next.value
+  
+        next = iterator.next()
+        index++
 
-      // If the cache "suddenly" has an index equal to or greater than the current iterable index,
-      // then another call has been made to iterate that is further along than this call; yield from the cache.
-      if (this._cache.length >= index) {
-        for (let newIndex = index; newIndex < this._cache.length; newIndex++) {
-          yield this._cache[newIndex]
+        // If the cache "suddenly" has an index equal to or greater than the current iterable index,
+        // then another call has been made to iterate that is further along than this call; yield from the cache.
+        if (this._cache.length > index) {
+          for (let newIndex = index; newIndex < this._cache.length; newIndex++) {
+            yield this._cache[newIndex]
+
+            index++
+          }
         }
       }
     }
