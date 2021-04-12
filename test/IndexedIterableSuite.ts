@@ -107,12 +107,4 @@ describe('IndexedIterable', () => {
     deepStrictEqual(helloWorldIterable[4], expected2)
     strictEqual(helloWorldIterable[Symbol.iterator], null)
   })
-
-  it('should iterate base class twice', () => {
-    const expected: HelloWorld = { hello: 'world' }
-    const helloWorldIterable = new IndexedIterable(helloWorld())
-
-    for (const actual of helloWorldIterable) deepStrictEqual(actual, expected)
-    for (const actual of helloWorldIterable) deepStrictEqual(actual, expected)
-  })
 })

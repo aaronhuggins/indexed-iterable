@@ -88,12 +88,6 @@ export class IndexedIterable<T> extends CachedIterable<T> {
 
   /** Returns an iterable of key, value pairs for every entry in the indexed iterable. */
   * entries (): IterableIterator<[number, T]> {
-    if (this._iterableFinished) {
-      for (const value of this._cache.entries()) yield value
-
-      return
-    }
-
     let index = 0
 
     for (const value of this) {
@@ -109,8 +103,8 @@ export class IndexedIterable<T> extends CachedIterable<T> {
   }
 
   /** Returns an iterable of values for every entry in the indexed iterable. */
-  values (): IterableIterator<T> {
-    return this[Symbol.iterator]()
+  * values (): IterableIterator<T> {
+    for (const value of this) yield value
   }
 
   /** Execute a synchronous callback for each value in the indexed iterable. */
