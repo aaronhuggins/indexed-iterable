@@ -1,6 +1,6 @@
 {
   "name": "indexed-iterable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An implementation of an iterable wrapper which implements caching and indexing of other iterables (such as generators) to make them array-like and re-usable.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/ahuggins-nhs/indexed-iterable/issues"
   },
-  "homepage": "https://github.com/ahuggins-nhs/indexed-iterable#readme",
+  "homepage": "https://ahuggins-nhs.github.io/indexed-iterable/",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/gulp": "^4.0.8",
