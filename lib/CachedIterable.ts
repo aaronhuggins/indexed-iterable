@@ -48,7 +48,7 @@ export class CachedIterable<T> implements Iterable<T> {
         // Iterate over the wrapped iterable, incrementing the index for each turn to correctly cache values.
         const next = iterator.next()
 
-        // If the iterator is finished, yiled that signal for the protocol.
+        // If the iterator is finished, yield that signal for the protocol.
         if (next.done) {
           this._iterableFinished = true
           index++
@@ -59,6 +59,7 @@ export class CachedIterable<T> implements Iterable<T> {
           }
         }
 
+        // Cache the value.
         this._cache[index] = next.value
         index++
 
