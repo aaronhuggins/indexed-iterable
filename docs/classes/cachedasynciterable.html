@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CachedIterable | indexed-iterable</title>
+	<title>CachedAsyncIterable | indexed-iterable</title>
 	<meta name="description" content="Documentation for indexed-iterable">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">indexed-iterable</a>
 				</li>
 				<li>
-					<a href="cachediterable.html">CachedIterable</a>
+					<a href="cachedasynciterable.html">CachedAsyncIterable</a>
 				</li>
 			</ul>
-			<h1>Class CachedIterable&lt;T&gt;</h1>
+			<h1>Class CachedAsyncIterable&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -68,8 +68,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Class to make any iterable, such as a generator instance, re-usable while
-							maintaining their asynchronous nature by caching the underlying values as
+						<p>Class to make any async iterable, such as a generator instance, re-usable while
+							maintaining their iterable/iterator nature by caching the underlying values as
 						they are yielded.</p>
 					</div>
 				</div>
@@ -86,22 +86,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CachedIterable</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="cachedmap.html" class="tsd-signature-type" data-tsd-kind="Class">CachedMap</a>
-							</li>
-							<li>
-								<a href="indexediterable.html" class="tsd-signature-type" data-tsd-kind="Class">IndexedIterable</a>
-							</li>
-						</ul>
+						<span class="target">CachedAsyncIterable</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><span class="tsd-signature-type">AsyncIterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -111,28 +103,27 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter"><a href="cachediterable.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter"><a href="cachedasynciterable.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachediterable.html#_cache" class="tsd-kind-icon">_cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachediterable.html#_iterable" class="tsd-kind-icon">_iterable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachediterable.html#_iterablefinished" class="tsd-kind-icon">_iterable<wbr>Finished</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachedasynciterable.html#_cache" class="tsd-kind-icon">_cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachedasynciterable.html#_iterable" class="tsd-kind-icon">_iterable</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="cachedasynciterable.html#_iterablefinished" class="tsd-kind-icon">_iterable<wbr>Finished</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="cachediterable.html#_symbol_tostringtag_" class="tsd-kind-icon">[<wbr>Symbol.to<wbr>String<wbr>Tag]</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="cachedasynciterable.html#_symbol_tostringtag_" class="tsd-kind-icon">[<wbr>Symbol.to<wbr>String<wbr>Tag]</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cachediterable.html#_symbol_iterator_" class="tsd-kind-icon">[<wbr>Symbol.iterator]</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="cachediterable.html#getsize" class="tsd-kind-icon">get<wbr>Size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cachedasynciterable.html#_symbol_asynciterator_" class="tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]</a></li>
 							</ul>
 						</section>
 					</div>
@@ -144,13 +135,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Cached<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>iterable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cachediterable.html" class="tsd-signature-type" data-tsd-kind="Class">CachedIterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Cached<wbr>Async<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>iterable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AsyncIterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cachedasynciterable.html" class="tsd-signature-type" data-tsd-kind="Class">CachedAsyncIterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L7">lib/CachedIterable.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L7">lib/CachedAsyncIterable.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -162,10 +153,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> iterable: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> iterable: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AsyncIterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="cachediterable.html" class="tsd-signature-type" data-tsd-kind="Class">CachedIterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="cachedasynciterable.html" class="tsd-signature-type" data-tsd-kind="Class">CachedAsyncIterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -178,17 +169,17 @@
 					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L15">lib/CachedIterable.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L15">lib/CachedAsyncIterable.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="_iterable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> _iterable</h3>
-					<div class="tsd-signature tsd-kind-icon">_iterable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">_iterable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AsyncIterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L16">lib/CachedIterable.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L16">lib/CachedAsyncIterable.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +189,7 @@
 					<div class="tsd-signature tsd-kind-icon">_iterable<wbr>Finished<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L17">lib/CachedIterable.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L17">lib/CachedAsyncIterable.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,7 +206,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L19">lib/CachedIterable.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L19">lib/CachedAsyncIterable.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -226,42 +217,20 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="_symbol_iterator_" class="tsd-anchor"></a>
-					<h3>[<wbr>Symbol.iterator]</h3>
+					<a name="_symbol_asynciterator_" class="tsd-anchor"></a>
+					<h3>[<wbr>Symbol.async<wbr>Iterator]</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">[<wbr>Symbol.iterator]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncIterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of Iterable.__@iterator</p>
+								<p>Implementation of AsyncIterable.__@asyncIterator</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L24">lib/CachedIterable.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedAsyncIterable.ts#L23">lib/CachedAsyncIterable.ts:23</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Implement iterable iterator for this class.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="getsize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ahuggins-nhs/indexed-iterable/blob/37fee75/lib/CachedIterable.ts#L78">lib/CachedIterable.ts:78</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">AsyncIterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -277,39 +246,36 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="cachedasynciterable.html" class="tsd-kind-icon">Cached<wbr>Async<wbr>Iterable</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-has-type-parameter">
-						<a href="cachediterable.html" class="tsd-kind-icon">Cached<wbr>Iterable</a>
+						<a href="cachedasynciterable.html" class="tsd-kind-icon">Cached<wbr>Async<wbr>Iterable</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="cachediterable.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="cachedasynciterable.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="cachediterable.html#_cache" class="tsd-kind-icon">_cache</a>
+								<a href="cachedasynciterable.html#_cache" class="tsd-kind-icon">_cache</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="cachediterable.html#_iterable" class="tsd-kind-icon">_iterable</a>
+								<a href="cachedasynciterable.html#_iterable" class="tsd-kind-icon">_iterable</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="cachediterable.html#_iterablefinished" class="tsd-kind-icon">_iterable<wbr>Finished</a>
+								<a href="cachedasynciterable.html#_iterablefinished" class="tsd-kind-icon">_iterable<wbr>Finished</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="cachediterable.html#_symbol_tostringtag_" class="tsd-kind-icon">[<wbr>Symbol.to<wbr>String<wbr>Tag]</a>
+								<a href="cachedasynciterable.html#_symbol_tostringtag_" class="tsd-kind-icon">[<wbr>Symbol.to<wbr>String<wbr>Tag]</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cachediterable.html#_symbol_iterator_" class="tsd-kind-icon">[<wbr>Symbol.iterator]</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="cachediterable.html#getsize" class="tsd-kind-icon">get<wbr>Size</a>
+								<a href="cachedasynciterable.html#_symbol_asynciterator_" class="tsd-kind-icon">[<wbr>Symbol.async<wbr>Iterator]</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="cachediterable.html" class="tsd-kind-icon">Cached<wbr>Iterable</a>
+					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="cachedmap.html" class="tsd-kind-icon">Cached<wbr>Map</a>
 					</li>
