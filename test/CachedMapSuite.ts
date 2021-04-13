@@ -1,9 +1,6 @@
 import { deepStrictEqual, doesNotThrow, strictEqual } from 'assert'
 import { CachedMap } from '../index'
-
-interface HelloWorld {
-  hello: 'world'
-}
+import { HelloWorld } from './helpers'
 
 function * helloWorld (): Generator<[number, HelloWorld]> {
   for (let i = 0; i < 10; i++) {

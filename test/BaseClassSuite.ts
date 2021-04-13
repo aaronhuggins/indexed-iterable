@@ -1,15 +1,10 @@
 import { deepStrictEqual, strictEqual } from 'assert'
 import { CachedAsyncIterable, CachedIterable } from '../index'
-
-interface HelloWorld {
-  hello: 'world'
-}
+import { array, HelloWorld } from './helpers'
 
 async function * helloWorld (): AsyncGenerator<HelloWorld> {
   for (let i = 0; i < 10; i++) yield { hello: 'world' }
 }
-
-const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 describe('Base Classes', () => {
   describe('CachedIterable', () => {
