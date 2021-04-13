@@ -12,19 +12,19 @@ export async function cleanup (): Promise<void> {
   })
 }
 
-export async function lint () {
+export async function lint (): Promise<void> {
   await shell.task('ts-standard')()
 }
 
-export async function fix () {
+export async function fix (): Promise<void> {
   await shell.task('ts-standard --fix')()
 }
 
-export async function mocha () {
+export async function mocha (): Promise<void> {
   await shell.task('mocha')()
 }
 
-export async function nyc () {
+export async function nyc (): Promise<void> {
   await shell.task('nyc mocha')()
 }
 

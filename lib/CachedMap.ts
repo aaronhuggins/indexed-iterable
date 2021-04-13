@@ -27,7 +27,7 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     let next: IteratorResult<[K, V]> = iterator.next()
     let index = 0
 
-    while (!next.done) {
+    while (!next.done) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
       this._keys[index] = next.value[0]
       this._values[index] = next.value[1]
 
@@ -76,7 +76,7 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     return false
   }
 
-  forEach(callbackfn: (value: V, key: K, map: CachedMap<K, V>) => void, thisArg?: any): void {
+  forEach (callbackfn: (value: V, key: K, map: CachedMap<K, V>) => void, thisArg?: any): void {
     const fn: typeof callbackfn = typeof thisArg === 'undefined'
       ? callbackfn.bind(this)
       : callbackfn.bind(thisArg)
@@ -84,7 +84,7 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     for (const [key, value] of this.entries()) fn(value, key, this)
   }
 
-  get(key: K): V | undefined {
+  get (key: K): V | undefined {
     const index = this._keys.indexOf(key)
 
     if (index > -1) {
@@ -96,7 +96,7 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     }
   }
 
-  has(key: K): boolean {
+  has (key: K): boolean {
     const index = this._keys.indexOf(key)
 
     if (index > -1) {
@@ -110,7 +110,7 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     return false
   }
 
-  set(key: K, value: V): this {
+  set (key: K, value: V): this {
     const index = this._keys.indexOf(key)
 
     if (index > -1) {
@@ -136,17 +136,17 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
   }
 
   /** Returns an iterable of key, value pairs for every entry in the map. */
-  * entries(): IterableIterator<[K, V]> {
+  * entries (): IterableIterator<[K, V]> {
     for (const kv of this) yield kv
   }
 
   /** Returns an iterable of keys in the map. */
-  * keys(): IterableIterator<K> {
+  * keys (): IterableIterator<K> {
     for (const [key] of this) yield key
   }
 
   /** Returns an iterable of values in the map. */
-  * values(): IterableIterator<V> {
+  * values (): IterableIterator<V> {
     for (const kv of this) yield kv[1]
   }
 }

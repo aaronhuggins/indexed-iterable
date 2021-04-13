@@ -85,7 +85,7 @@ describe('CachedMap', () => {
     strictEqual(count, 9)
   })
 
-  it ('should handle additional map methods', () => {
+  it('should handle additional map methods', () => {
     const expected: HelloWorld = { hello: 'world' }
     const expected2 = { world: 'hello' }
     const map1 = new CachedMap(helloWorld())
@@ -127,11 +127,11 @@ describe('CachedMap', () => {
     helloWorldMap.forEach((actual) => deepStrictEqual(actual, expected))
     helloWorldMap.forEach((actual) => deepStrictEqual(actual, expected), expected)
 
-    helloWorldMap['sendMe'] = expected
+    helloWorldMap.sendMe = expected
     helloWorldMap[4] = expected2 as any
     helloWorldMap[Symbol.iterator] = null
 
-    deepStrictEqual(helloWorldMap['sendMe'], expected)
+    deepStrictEqual(helloWorldMap.sendMe, expected)
     deepStrictEqual(helloWorldMap[4], expected2)
     strictEqual(helloWorldMap[Symbol.iterator], null)
     strictEqual(Object.prototype.toString.call(helloWorldMap), '[object CachedMap]')

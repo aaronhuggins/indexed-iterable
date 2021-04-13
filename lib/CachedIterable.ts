@@ -53,7 +53,7 @@ export class CachedIterable<T> implements Iterable<T> {
         const next = iterator.next()
 
         // If the iterator is finished, yield that signal for the protocol.
-        if (next.done) {
+        if (next.done) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
           this._iterableFinished = true
           index++
 
@@ -94,7 +94,7 @@ export class CachedIterable<T> implements Iterable<T> {
     let next: IteratorResult<T> = iterator.next()
     let index = -1
 
-    while (!next.done) {
+    while (!next.done) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
       next = iterator.next()
       index++
     }

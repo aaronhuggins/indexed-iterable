@@ -83,7 +83,7 @@ describe('IndexedIterable', () => {
     strictEqual(count, 9)
   })
 
-  it ('should handle additional array-like methods', () => {
+  it('should handle additional array-like methods', () => {
     const expected: HelloWorld = { hello: 'world' }
     const expected2 = { world: 'hello' }
     const helloWorldIterable = new IndexedIterable(helloWorld())
@@ -105,11 +105,11 @@ describe('IndexedIterable', () => {
 
     for (const actual of new2Iterable) deepStrictEqual(actual, expected2)
 
-    helloWorldIterable['sendMe'] = expected
+    helloWorldIterable.sendMe = expected
     helloWorldIterable[4] = expected2 as any
     helloWorldIterable[Symbol.iterator] = null
 
-    deepStrictEqual(helloWorldIterable['sendMe'], expected)
+    deepStrictEqual(helloWorldIterable.sendMe, expected)
     deepStrictEqual(helloWorldIterable[4], expected2)
     strictEqual(helloWorldIterable[Symbol.iterator], null)
     strictEqual(Object.prototype.toString.call(helloWorldIterable), '[object IndexedIterable]')

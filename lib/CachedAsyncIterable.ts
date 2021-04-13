@@ -53,7 +53,7 @@ export class CachedAsyncIterable<T> implements AsyncIterable<T> {
         const next = await iterator.next()
 
         // If the iterator is finished, yield that signal for the protocol.
-        if (next.done) {
+        if (next.done) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
           this._iterableFinished = true
           index++
 

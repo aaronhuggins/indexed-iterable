@@ -26,7 +26,7 @@ describe('Base Classes', () => {
       const arrayIterable = new CachedAsyncIterable(array)
       const nullIterable = new CachedAsyncIterable('' as unknown as any)
       const iterable = new CachedAsyncIterable()
-  
+
       strictEqual(helloWorldIterable instanceof CachedAsyncIterable, true)
       strictEqual(arrayIterable instanceof CachedAsyncIterable, true)
       strictEqual(nullIterable instanceof CachedAsyncIterable, true)
@@ -38,7 +38,7 @@ describe('Base Classes', () => {
       const helloWorldIterable = new CachedAsyncIterable(helloWorld())
       const arrayIterable = new CachedAsyncIterable(array)
       let length = 0
-      let nested = 0
+      const nested = 0
 
       for await (const actual of helloWorldIterable) {
         deepStrictEqual(actual, expected)
