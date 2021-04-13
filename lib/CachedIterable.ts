@@ -1,6 +1,4 @@
-function isIterable<T = any> (iterable: any): iterable is Iterable<T> {
-  return typeof iterable !== 'undefined' && iterable !== null && typeof iterable[Symbol.iterator] === 'function'
-}
+import { isIterable } from './helpers'
 
 /** Class to make any iterable, such as a generator instance, re-usable while
  * maintaining their asynchronous nature by caching the underlying values as
@@ -19,54 +17,57 @@ export class CachedIterable<T> implements Iterable<T> {
   protected _iterableFinished: boolean
 
   /** Implement iterable iterator for this class. */
-  * [Symbol.iterator] (): IterableIterator<T> {
-    // If the initial iteration has finished, short-circuit and yield values from the cache.
-    if (this._iterableFinished) {
-      for (const value of this._cache) yield value
-
-      return
-    }
-
+  [Symbol.iterator] (): Iterator<T> {
+    const useCache = this._iterableFinished || typeof this._iterable === 'undefined'
+    const iterator: Iterator<T> = useCache
+      ? this._cache[Symbol.iterator]()
+      : this._iterable[Symbol.iterator]()
     // Preset an incremental index for setting values in the cache.
     let index = 0
 
-    if (this._cache.length > 0) {
-      // If the cache is populated, but another instance of iteration has not finished, yield values from the cache first.
-      for (const cached of this._cache) {
-        yield cached
+    return {
+      next: () => {
+        // If the initial iteration has finished, short-circuit and just yield values from the cache.
+        if (useCache) {
+          return iterator.next()
+        }
 
-        // Increment the index for each turn so that the current state of the iterable populates values in their correct cache index.
-        index++
-      }
-    }
-
-    // Iterate over the wrapped iterable, incrementing the index for each turn to correctly cache values.
-    if (typeof this._iterable === 'object') {
-      const iterator = this._iterable[Symbol.iterator]()
-      let next: IteratorResult<T> = iterator.next()
-
-      while (next.done !== true) {
-        this._cache[index] = next.value
-
-        yield next.value
-  
-        next = iterator.next()
-        index++
-
-        // If the cache "suddenly" has an index equal to or greater than the current iterable index,
-        // then another call has been made to iterate that is further along than this call; yield from the cache.
+        // If the cache is populated, but another instance of iteration has not finished,
+        // yield values from the cache until index is equal to or higher than the length.
         if (this._cache.length > index) {
-          for (let newIndex = index; newIndex < this._cache.length; newIndex++) {
-            yield this._cache[newIndex]
+          const cached = this._cache[index]
 
-            index++
+          index++
+
+          return {
+            done: false,
+            value: cached
           }
+        }
+
+        // Iterate over the wrapped iterable, incrementing the index for each turn to correctly cache values.
+        const next = iterator.next()
+
+        // If the iterator is finished, yiled that signal for the protocol.
+        if (next.done) {
+          this._iterableFinished = true
+          index++
+
+          return {
+            done: true,
+            value: next.value
+          }
+        }
+
+        this._cache[index] = next.value
+        index++
+
+        return {
+          done: false,
+          value: next.value
         }
       }
     }
-
-    // When the current iterable has been iterated once, set the flag to short-circuit from the cache for subsequent calls.
-    this._iterableFinished = true
   }
 
   protected getSize (): number {
@@ -84,7 +85,7 @@ export class CachedIterable<T> implements Iterable<T> {
       }
     }
 
-    const iterator = this._iterable[Symbol.iterator]()
+    const iterator = this[Symbol.iterator]()
     let next: IteratorResult<T> = iterator.next()
     let index = -1
 
