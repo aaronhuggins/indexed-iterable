@@ -127,11 +127,11 @@ describe('CachedMap', () => {
     helloWorldMap.forEach((actual) => deepStrictEqual(actual, expected))
     helloWorldMap.forEach((actual) => deepStrictEqual(actual, expected), expected)
 
-    helloWorldMap.sendMe = expected
+    ;(helloWorldMap as any).sendMe = expected
     helloWorldMap[4] = expected2 as any
     helloWorldMap[Symbol.iterator] = null
 
-    deepStrictEqual(helloWorldMap.sendMe, expected)
+    deepStrictEqual((helloWorldMap as any).sendMe, expected)
     deepStrictEqual(helloWorldMap[4], expected2)
     strictEqual(helloWorldMap[Symbol.iterator], null)
     strictEqual(Object.prototype.toString.call(helloWorldMap), '[object CachedMap]')

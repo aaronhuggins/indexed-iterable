@@ -38,7 +38,7 @@ describe('Base Classes', () => {
       const helloWorldIterable = new CachedAsyncIterable(helloWorld())
       const arrayIterable = new CachedAsyncIterable(array)
       let length = 0
-      const nested = 0
+      let nested = 0
 
       for await (const actual of helloWorldIterable) {
         deepStrictEqual(actual, expected)
@@ -48,6 +48,8 @@ describe('Base Classes', () => {
             deepStrictEqual(actual, expected)
 
             if (nested === 6) break
+
+            nested++
           }
         }
         length++
