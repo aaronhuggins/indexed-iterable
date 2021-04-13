@@ -24,7 +24,9 @@ export class CachedAsyncIterable<T> implements AsyncIterable<T> {
     const useCache = this._iterableFinished || typeof this._iterable === 'undefined'
     const iterator: AsyncIterator<T> = useCache
       ? this._cache[Symbol.iterator]()
-      : this._iterable[Symbol.asyncIterator]()
+      : typeof this._iterable[Symbol.asyncIterator] === 'function'
+        ? this._iterable[Symbol.asyncIterator]()
+        : this._iterable[Symbol.iterator]()
     let index = 0
 
     return {

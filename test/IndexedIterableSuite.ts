@@ -112,5 +112,6 @@ describe('IndexedIterable', () => {
     deepStrictEqual(helloWorldIterable['sendMe'], expected)
     deepStrictEqual(helloWorldIterable[4], expected2)
     strictEqual(helloWorldIterable[Symbol.iterator], null)
+    strictEqual(Object.prototype.toString.call(helloWorldIterable), '[object IndexedIterable]')
   })
 })

@@ -13,6 +13,8 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
   protected _values: V[]
 
   get size (): number {
+    if (this._iterableFinished) return this._keys.length
+
     return super.getSize()
   }
 
@@ -114,6 +116,18 @@ export class CachedMap<K = any, V = any> extends CachedIterable<[K, V]> implemen
     if (index > -1) {
       this._values[index] = value
     } else {
+      let newIndex = 0
+
+      for (const [findKey] of this) {
+        if (findKey === key) {
+          this._values[newIndex] = value
+
+          return this
+        }
+
+        newIndex++
+      }
+
       this._keys.push(key)
       this._values.push(value)
     }
