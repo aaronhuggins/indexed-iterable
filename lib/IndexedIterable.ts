@@ -47,6 +47,10 @@ export class IndexedIterable<T> extends CachedIterable<T> {
     return super.getSize()
   }
 
+  get [Symbol.toStringTag] (): string {
+    return 'IndexedIterable'
+  }
+
   /** Get a result by its index in the list. */
   private getByIndex (key: number): T {
     // We check if `key in ...` because we need to avoid weird cases where `indexOf` or `includes` may return `-1` despite an index being present.

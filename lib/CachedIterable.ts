@@ -16,6 +16,10 @@ export class CachedIterable<T> implements Iterable<T> {
   protected readonly _iterable?: Iterable<T>
   protected _iterableFinished: boolean
 
+  get [Symbol.toStringTag] (): string {
+    return 'CachedIterable'
+  }
+
   /** Implement iterable iterator for this class. */
   [Symbol.iterator] (): Iterator<T> {
     const useCache = this._iterableFinished || typeof this._iterable === 'undefined'
