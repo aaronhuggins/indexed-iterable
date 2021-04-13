@@ -29,14 +29,14 @@ for (const [index, value] of helloWorldIterable.entries()) {
   if (index === 3) {
     // Arbitrarily try iterating in reverse in the middle of iterating.
     for (let i = index; i > -1; i--) {
-      deepStrictEqual(helloWorldIterable[i])
+      console.log(helloWorldIterable[i])
     }
   }
 
   if (index === 5) {
     // Arbitrarily try iterating fast-forward in the middle of iterating.
     for (let i = index; i < 8; i++) {
-      deepStrictEqual(helloWorldIterable[i])
+      console.log(helloWorldIterable[i])
     }
   }
 }
