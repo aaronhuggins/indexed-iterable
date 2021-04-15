@@ -52,7 +52,7 @@ export class IndexedIterable<T> extends CachedIterable<T> {
   }
 
   /** Get a result by its index in the list. */
-  private getByIndex (key: number): T {
+  protected getByIndex (key: number): T {
     // We check if `key in ...` because we need to avoid weird cases where `indexOf` or `includes` may return `-1` despite an index being present.
     if (key in this._cache || this._iterableFinished) {
       return this._cache[key]
